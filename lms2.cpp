@@ -2,15 +2,38 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<fstream>
-#include<string.h>
+#include<string>
 #include<conio.h>
 using namespace std;
+class book
+{
+	string book, author, publication;
+	int bookid[5], qty;
+	float price;
+     public:
+	void list(int);
+	void search(int);
+	void issue();
+	void fine(int,int,int,int,int,int);
+};
+
+class user
+{
+	string username;
+	int userid[5];
+     public:
+	void registration();
+	void userlogin(int);
+};
+	
+	
+	
+
+
 class lib
 {
    public:
-       char book[100],author[50],bookid[20],publication[50], stuname[100], stid[20];
-       int qty,B,price;
-       lib()
+      lib()
        {
            strcpy(book,"NO Book Name");
 	   strcpy(stuname,"NO Student Name");
