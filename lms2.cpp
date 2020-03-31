@@ -22,7 +22,7 @@ class book
         gets(bookname);
         cout<<"\n\nEnter The Author's Name ";
         gets(author);
-        cout<<"\n\n\nBook Created..";
+        cout<<"\n\n\nBook Added..";
     }
 
     void show_book()
@@ -68,18 +68,18 @@ public:
     {
         clrscr();
          cout<<"\nNEW STUDENT ENTRY...\n";
-        cout<<"\nEnter The admission no. ";
+        cout<<"\nEnter The registration no. ";
         cin>>regno;
         cout<<"\n\nEnter The Name of The Student ";
         gets(studentname);
         token=0;
         studentbookid[0]='/0';
-        cout<<"\n\nStudent Record Created..";
+        cout<<"\n\nStudent Record Added..";
     }
 
     void show_student()
     {
-        cout<<"\nAdmission no. : "<<regno;
+        cout<<"\nRegistration no. : "<<regno;
         cout<<"\nStudent Name : ";
         puts(studentname);
         cout<<"\nNo of Book issued : "<<token;
@@ -89,7 +89,7 @@ public:
 
     void modify_student()
     {
-        cout<<"\nAdmission no. : "<<regno;
+        cout<<"\nRegistration no. : "<<regno;
         cout<<"\nModify Student Name : ";
         gets(studentname);
     }
@@ -359,9 +359,9 @@ void display_alls()
          }
 
     cout<<"\n\n\t\tSTUDENT LIST\n\n";
-    cout<<"==================================================================\n";
+
     cout<<"\tRegistration No."<<setw(10)<<"Name"<<setw(20)<<"Book Issued\n";
-    cout<<"==================================================================\n";
+   
 
     while(fp.read((char*)&st,sizeof(student)))
     {
@@ -389,9 +389,9 @@ void display_allbook()
          }
 
     cout<<"\n\n\t\tBook LIST\n\n";
-    cout<<"=========================================================================\n";
+ 
     cout<<"Book ID"<<setw(20)<<"Book Name"<<setw(25)<<"Author\n";
-    cout<<"=========================================================================\n";
+  
 
     while(fp.read((char*)&bk,sizeof(book)))
     {
@@ -545,7 +545,7 @@ void admin_menu()
             case 3:
                    char num[6];
                    clrscr();
-                   cout<<"\n\n\tPlease Enter The Admission No. ";
+                   cout<<"\n\n\tPlease Enter The Registration No. ";
                    cin>>num;
                    display_specificstudent(num);
                    break;
