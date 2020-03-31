@@ -64,7 +64,7 @@ class student
     char studentbookid[6];
     int token;
 public:
-    void create_student()
+    void add_student()
     {
         clrscr();
          cout<<"\nNEW STUDENT ENTRY...\n";
@@ -144,7 +144,7 @@ void write_book()
     do
     {
         clrscr();
-        bk.create_book();
+        bk.add_book();
         fp.write((char*)&bk,sizeof(book));
         cout<<"\n\nDo you want to add more record..(y/n?)";
         cin>>ch;
@@ -158,7 +158,7 @@ void write_student()
     fp.open("student.dat",ios::out|ios::app);
     do
     {
-        st.create_student();
+        st.add_student();
         fp.write((char*)&st,sizeof(student));
         cout<<"\n\ndo you want to add more record..(y/n?)";
         cin>>ch;
@@ -524,12 +524,12 @@ void admin_menu()
     clrscr();
     int ch2;
     cout<<"\n\n\n\tADMINISTRATOR MENU";
-    cout<<"\n\n\t1.CREATE STUDENT RECORD";
+    cout<<"\n\n\t1.ADD STUDENT RECORD";
     cout<<"\n\n\t2.DISPLAY ALL STUDENTS RECORD";
     cout<<"\n\n\t3.DISPLAY SPECIFIC STUDENT RECORD ";
     cout<<"\n\n\t4.MODIFY STUDENT RECORD";
     cout<<"\n\n\t5.DELETE STUDENT RECORD";
-    cout<<"\n\n\t6.CREATE BOOK ";
+    cout<<"\n\n\t6.ADD BOOK ";
     cout<<"\n\n\t7.DISPLAY ALL BOOKS ";
     cout<<"\n\n\t8.DISPLAY SPECIFIC BOOK ";
     cout<<"\n\n\t9.MODIFY BOOK ";
