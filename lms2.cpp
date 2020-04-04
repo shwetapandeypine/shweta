@@ -19,12 +19,14 @@ class book
 	void add_book()
 	{
         cout<<"\nNEW BOOK ENTRY...\n";
-        cout<<"\nEnter The book no.";
+        cout<<"\nEnter The book no. :";
         cin>>bookid;
-        cout<<"\n\nEnter The Name of The Book ";
-        gets(bookname);
-        cout<<"\n\nEnter The Author's Name ";
-        gets(author);
+        fflush(stdin);
+        cout<<"\n\nEnter The Name of The Book :";
+        fgets(bookname,50,stdin);
+        fflush(stdin);
+        cout<<"\n\nEnter The Author's Name :";
+        fgets(author,20,stdin);
         cout<<"\n\n\nBook Added..";
     }
 
@@ -52,7 +54,9 @@ class book
     }
 
     void report()
-    {cout<<bookid<<setw(30)<<bookname<<setw(30)<<author<<endl;}
+    {cout<<"\n"<<bookid<<"\n"<<bookname<<"\n"<<author<<"\n"<<endl;
+    cout<<"...................................................";
+    }
 
 
 };
@@ -125,7 +129,9 @@ public:
     }
 
     void report()
-    {cout<<"\t"<<regno<<"\n"<<studentname<<"\n"<<token<<"\n"<<endl;}
+    {cout<<"\n"<<regno<<"\n"<<studentname<<"\n"<<token<<"\n"<<endl;
+    cout<<"........................................................";
+    }
 
 };
 
@@ -364,7 +370,7 @@ void display_allstudent()
 
     cout<<"\n\n\t\tSTUDENT LIST\n\n";
 
-    //cout<<"\t"<<"Registration No."<<setw(20)<<"Student Name"<<setw(20)<<"Book Issued"<<"\n";
+
 
 
     while(fp.read((char*)&st,sizeof(student)))
@@ -394,7 +400,7 @@ void display_allbook()
 
     cout<<"\n\n\t\tBook LIST\n\n";
 
-    cout<<"Book ID"<<setw(20)<<"Book Name"<<setw(25)<<"Author\n";
+
 
 
     while(fp.read((char*)&bk,sizeof(book)))
