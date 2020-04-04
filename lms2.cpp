@@ -1,9 +1,12 @@
 #include<fstream>
-#include<conio>
+#include<conio.h>
 #include<stdio.h>
 #include<process.h>
 #include<string.h>
-#include<iomanip.h>
+#include<iomanip>
+#include<iostream>
+
+using namespace std;
 
 
 
@@ -52,7 +55,7 @@ class book
     {cout<<bookid<<setw(30)<<bookname<<setw(30)<<author<<endl;}
 
 
-};         
+};
 
 
 
@@ -66,7 +69,7 @@ class student
 public:
     void add_student()
     {
-        clrscr();
+        system("cls");
          cout<<"\nNEW STUDENT ENTRY...\n";
         cout<<"\nEnter The registration no. ";
         cin>>regno;
@@ -123,7 +126,7 @@ public:
     void report()
     {cout<<"\t"<<regno<<setw(20)<<studentname<<setw(10)<<token<<endl;}
 
-};         
+};
 
 
 
@@ -143,7 +146,7 @@ void write_book()
     fp.open("book.dat",ios::out|ios::app);
     do
     {
-        clrscr();
+        system("cls");
         bk.add_book();
         fp.write((char*)&bk,sizeof(book));
         cout<<"\n\nDo you want to add more record..(y/n?)";
@@ -185,7 +188,7 @@ void display_specificbook(char n[])
              flag=1;
         }
     }
-    
+
     fp.close();
     if(flag==0)
         cout<<"\n\nBook does not exist";
@@ -205,7 +208,7 @@ void display_specificstudent(char n[])
             flag=1;
         }
     }
-    
+
     fp.close();
     if(flag==0)
             cout<<"\n\nStudent does not exist";
@@ -220,7 +223,7 @@ void modify_book()
 {
     char n[6];
     int found=0;
-    clrscr();
+    system("cls");
     cout<<"\n\n\tMODIFY BOOK REOCORD.... ";
     cout<<"\n\n\tEnter The book ID of The book";
     cin>>n;
@@ -251,7 +254,7 @@ void modify_student()
 {
     char n[6];
     int found=0;
-    clrscr();
+    system("cls");
     cout<<"\n\n\tMODIFY STUDENT RECORD... ";
     cout<<"\n\n\tEnter registration no. of The student";
     cin>>n;
@@ -270,7 +273,7 @@ void modify_student()
             found=1;
         }
     }
-    
+
     fp.close();
     if(found==0)
         cout<<"\n\n Record Not Found ";
@@ -285,8 +288,8 @@ void modify_student()
 void delete_student()
 {
     char n[6];
-    int flag=0;    
-    clrscr();
+    int flag=0;
+    system("cls");
         cout<<"\n\n\n\tDELETE STUDENT...";
         cout<<"\n\nEnter The registration no. of the Student You Want To Delete : ";
         cin>>n;
@@ -301,7 +304,7 @@ void delete_student()
         else
                flag=1;
     }
-        
+
     fp2.close();
         fp.close();
         remove("student.dat");
@@ -317,7 +320,7 @@ void delete_student()
 void delete_book()
 {
     char n[6];
-    clrscr();
+    system("cls");
     cout<<"\n\n\n\tDELETE BOOK ...";
     cout<<"\n\nEnter The Book ID of the Book You Want To Delete : ";
     cin>>n;
@@ -327,12 +330,12 @@ void delete_book()
     fp.seekg(0,ios::beg);
     while(fp.read((char*)&bk,sizeof(book)))
     {
-        if(strcmpi(bk.return_bookid(),n)!=0)  
+        if(strcmpi(bk.return_bookid(),n)!=0)
         {
             fp2.write((char*)&bk,sizeof(book));
         }
     }
-        
+
     fp2.close();
         fp.close();
         remove("book.dat");
@@ -347,9 +350,9 @@ void delete_book()
 //************display all students list*****************
 
 
-void display_alls()
+void display_allstudent()
 {
-    clrscr();
+    system("cls");
          fp.open("student.dat",ios::in);
          if(!fp)
          {
@@ -361,13 +364,13 @@ void display_alls()
     cout<<"\n\n\t\tSTUDENT LIST\n\n";
 
     cout<<"\tRegistration No."<<setw(10)<<"Name"<<setw(20)<<"Book Issued\n";
-   
+
 
     while(fp.read((char*)&st,sizeof(student)))
     {
         st.report();
     }
-         
+
     fp.close();
     getch();
 }
@@ -379,7 +382,7 @@ void display_alls()
 
 void display_allbook()
 {
-    clrscr();
+    system("cls");
     fp.open("book.dat",ios::in);
     if(!fp)
     {
@@ -389,9 +392,9 @@ void display_allbook()
          }
 
     cout<<"\n\n\t\tBook LIST\n\n";
- 
+
     cout<<"Book ID"<<setw(20)<<"Book Name"<<setw(25)<<"Author\n";
-  
+
 
     while(fp.read((char*)&bk,sizeof(book)))
     {
@@ -410,7 +413,7 @@ void book_issue()
 {
     char sn[6],bn[6];
     int found=0,flag=0;
-    clrscr();
+    system("cls");
     cout<<"\n\nBOOK ISSUE ...";
     cout<<"\n\n\tEnter The student's registration no.";
     cin>>sn;
@@ -421,7 +424,7 @@ void book_issue()
         if(strcmpi(st.return_regno(),sn)==0)
         {
             found=1;
-            if(st.rettoken()==0)
+            if(st.return_token()==0)
             {
                       cout<<"\n\n\tEnter the book ID ";
                 cin>>bn;
@@ -461,7 +464,7 @@ void book_deposit()
 {
     char sn[6],bn[6];
     int found=0,flag=0,day,fine;
-    clrscr();
+    system("cls");
     cout<<"\n\nBOOK DEPOSIT ...";
     cout<<"\n\n\tEnter The student's registration no.";
     cin>>sn;
@@ -472,7 +475,7 @@ void book_deposit()
         if(strcmpi(st.return_regno(),sn)==0)
         {
             found=1;
-            if(st.rettoken()==1)
+            if(st.return_token()==1)
             {
             while(fp1.read((char*)&bk,sizeof(book))&& flag==0)
             {
@@ -521,7 +524,7 @@ void book_deposit()
 
 void admin_menu()
 {
-    clrscr();
+    system("cls");
     int ch2;
     cout<<"\n\n\n\tADMINISTRATOR MENU";
     cout<<"\n\n\t1.ADD STUDENT RECORD";
@@ -539,24 +542,24 @@ void admin_menu()
     cin>>ch2;
     switch(ch2)
     {
-            case 1: clrscr();
+            case 1: system("cls");
                 write_student();break;
             case 2: display_allstudent();break;
             case 3:
                    char num[6];
-                   clrscr();
+                   system("cls");
                    cout<<"\n\n\tPlease Enter The Registration No. ";
                    cin>>num;
                    display_specificstudent(num);
                    break;
               case 4: modify_student();break;
               case 5: delete_student();break;
-        case 6: clrscr();
+        case 6: system("cls");
             write_book();break;
         case 7: display_allbook();break;
         case 8: {
                    char num[6];
-                   clrscr();
+                   system("cls");
                    cout<<"\n\n\tPlease Enter The book No. ";
                    cin>>num;
                    display_specificbook(num);
@@ -576,13 +579,13 @@ void admin_menu()
 
 
 
-void main()
+int main()
 {
     char ch;
     cout<<"\n\t\t\tLIBRARY MANAGEMENT SYSTEM\n\n\n";
     do
     {
-        clrscr();
+        system("cls");
         cout<<"\n\n\n\tMAIN MENU";
         cout<<"\n\n\t01. BOOK ISSUE";
         cout<<"\n\n\t02. BOOK DEPOSIT";
@@ -592,7 +595,7 @@ void main()
           ch=getche();
           switch(ch)
           {
-            case '1':clrscr();
+            case '1':system("cls");
                  book_issue();
                     break;
               case '2':book_deposit();
@@ -600,8 +603,9 @@ void main()
               case '3':admin_menu();
                  break;
               case '4':exit(0);
-              default :cout<<"\a";
+              default :cout<<"Invalid Input";
         }
         }while(ch!='4');
+        return 0;
 }
 
