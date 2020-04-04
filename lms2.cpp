@@ -73,10 +73,11 @@ public:
          cout<<"\nNEW STUDENT ENTRY...\n";
         cout<<"\nEnter The registration no. ";
         cin>>regno;
+        fflush(stdin);
         cout<<"\n\nEnter The Name of The Student ";
-        gets(studentname);
+        fgets(studentname,20,stdin);
         token=0;
-        studentbookid[0]='/0';
+        studentbookid[0]='\0';
         cout<<"\n\nStudent Record Added..";
     }
 
@@ -94,7 +95,7 @@ public:
     {
         cout<<"\nRegistration no. : "<<regno;
         cout<<"\nModify Student Name : ";
-        gets(studentname);
+        fgets(studentname,20,stdin);
     }
 
     char* return_regno()
@@ -124,7 +125,7 @@ public:
     }
 
     void report()
-    {cout<<"\t"<<regno<<setw(20)<<studentname<<setw(10)<<token<<endl;}
+    {cout<<"\t"<<regno<<"\n"<<studentname<<"\n"<<token<<"\n"<<endl;}
 
 };
 
@@ -363,7 +364,7 @@ void display_allstudent()
 
     cout<<"\n\n\t\tSTUDENT LIST\n\n";
 
-    cout<<"\tRegistration No."<<setw(10)<<"Name"<<setw(20)<<"Book Issued\n";
+    //cout<<"\t"<<"Registration No."<<setw(20)<<"Student Name"<<setw(20)<<"Book Issued"<<"\n";
 
 
     while(fp.read((char*)&st,sizeof(student)))
